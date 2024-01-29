@@ -1,14 +1,6 @@
 import { CharacterCard } from "./components/CharacterCard/CharacterCard.js";
-
-// const character = {
-//   name: "Rick",
-//   image: "Bild von Rick",
-//   status: "alive",
-//   type: "forever",
-//   occurences: 51,
-// };
-
-// console.log(CharacterCard(character));
+import { nextPage } from "./components/NavPagination/NavPagination.js";
+import { prevPage } from "./components/NavPagination/NavPagination.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -21,21 +13,21 @@ const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-const maxPage = 1;
-const page = 1;
+const maxPage = 42;
+let page = 1;
 const searchQuery = "";
 
-async function fetchCharacters() {
+export async function fetchCharacters(page) {
   cardContainer.innerHTML = "";
 
-  const url = "https://rickandmortyapi.com/api/character";
+  const url = `https://rickandmortyapi.com/api/character?page=${page}`;
 
   const response = await fetch(url);
   const data = await response.json();
 
   const characters = data.results;
 
-  console.log(characters);
+  console.log(data);
 
   // console.log(characters[0].name)
 
@@ -47,3 +39,6 @@ async function fetchCharacters() {
 }
 
 fetchCharacters();
+
+nextPage();
+prevPage();
