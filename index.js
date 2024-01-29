@@ -1,3 +1,15 @@
+import { CharacterCard } from "./components/CharacterCard/CharacterCard.js";
+
+const character = {
+  name: "Rick",
+  image: "Bild von Rick",
+  status: "alive",
+  type: "forever",
+  occurences: 51,
+};
+
+console.log(CharacterCard(character));
+
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
