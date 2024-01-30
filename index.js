@@ -11,9 +11,10 @@ const navigation = document.querySelector('[data-js="navigation"]');
 const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
+const maxPageDisplay = document.querySelector('[data-js="max-page"]');
 
 // States
-const maxPage = 42;
+let maxPage = 42;
 let page = 1;
 const searchQuery = "";
 
@@ -27,9 +28,9 @@ export async function fetchCharacters(page) {
 
   const characters = data.results;
 
+  let maxPage = data.info.pages;
+  maxPageDisplay.textContent = maxPage;
   console.log(data);
-
-  // console.log(characters[0].name)
 
   characters.forEach((character) => {
     const card = CharacterCard(character);
@@ -39,6 +40,5 @@ export async function fetchCharacters(page) {
 }
 
 fetchCharacters();
-
 nextPage();
 prevPage();
