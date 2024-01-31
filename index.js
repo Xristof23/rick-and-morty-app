@@ -26,7 +26,7 @@ async function fetchCharacters() {
 
   const characters = data.results;
 
-  let maxPage = data.info.pages;
+  maxPage = data.info.pages;
   pagination.textContent = `${page} / ${maxPage}`;
   console.log(data);
 
@@ -35,6 +35,8 @@ async function fetchCharacters() {
 
     cardContainer.append(card);
   });
+
+  return maxPage;
 }
 
 fetchCharacters();
@@ -44,6 +46,7 @@ nextButton.addEventListener("click", () => {
     page += 1;
     pagination.textContent = `${page} / ${maxPage}`;
     fetchCharacters();
+    console.log(maxPage);
   }
 });
 
@@ -57,6 +60,11 @@ prevButton.addEventListener("click", () => {
 
 searchBar.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  if (page != 1) {
+    page = 1;
+  }
+
   searchQuery = event.target.query.value;
   fetchCharacters();
   searchBar.reset();
