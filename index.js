@@ -12,7 +12,7 @@ const pagination = document.querySelector('[data-js="pagination"]');
 // const maxPageDisplay = document.querySelector('[data-js="max-page"]');
 
 // States
-let maxPage = 42;
+let maxPage;
 let page = 1;
 let searchQuery = "";
 
