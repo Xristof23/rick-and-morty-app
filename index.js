@@ -41,7 +41,6 @@ async function appendCharacter() {
 
   characters.forEach((character) => {
     const card = CharacterCard(character);
-
     cardContainer.append(card);
   });
 

@@ -3,7 +3,8 @@ export function CharacterCard(character) {
   card.classList.add("card");
   card.innerHTML = `<div class="card__image-container">
     <img
-      class="card__image"
+      id="card__image"
+      class="card__image card__image--${character.status.toLowerCase()}"
     //   src=${character.image}
       alt=${character.name}
     />
